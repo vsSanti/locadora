@@ -1,23 +1,28 @@
 const bookshelf = require('./../bookshelf')
-const jwt = require('jsonwebtoken')
+const ExemplarFilme = require('./exemplarFilme')
 
 
 const Filme = bookshelf.Model.extend({
-    tableName: 'token',
-    usuario() {
-        return this.belongsTo('Usuario');
+    tableName: 'filme',
+    exemplares() {
+        return this.hasMany('ExemplarFilme', 'filme_id');
     },
 
     initialize() {
-        this.on('creating', this.generateAuthToken)
+        this.on('created', this.criaExemplares)
     },
 
-    async generateAuthToken() {
-        this.attributes.valor = await this.usuario().fetch().then(function (usuario) {
-            const usuarioJSON = usuario.toJSON()
-            return jwt.sign({ id: usuarioJSON.id }, process.env.JWT_KEY)
-        })
+    async criaExemplares() {
+        const listaExemplares = []
+        const n = Math.floor((Math.random() * 10) + 1)
+        console.log('Criando ' + n + ' exemplares para o filme ' + this.toJSON().nome)
+        for (let i = 0; i < n; i++) {
+            listaExemplares.push({ filme_id: this.id })
+        }
+        ExemplarFilme.query(function (qb) {
+            qb.insert(listaExemplares)
+        }).fetch()
     }
 });
 
-module.exports = bookshelf.model('Token', Filme)
+module.exports = bookshelf.model('Filme', Filme)

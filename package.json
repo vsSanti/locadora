@@ -1,0 +1,25 @@
+{
+  "name": "locadora",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.5.5",
+    "bookshelf": "^0.15.1",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.17.6",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.1",
+    "validator": "^11.0.0"
+  }
+}

@@ -1,0 +1,38 @@
+const insertArticle = (callback) => {
+    // create a new entry in articles database
+    // new Article({
+    //     title: "Sample title2",
+    //     body: "Sample body2"
+    // }).save()
+    //     .then(function (saved) {
+    //         // console.log(saved)
+    //         const insertedId = saved.attributes.id
+
+    //         callback(insertedId)
+    //     })
+
+    // Article.forge({ id: 8 }).save('body', 'minhasenha').then((article) => {
+    //     console.log(article)
+    //     callback(article.attributes.id)
+    // })
+
+    new Usuario({
+        nome: 'Vinicius Santiago',
+        email: 'viniciussdsilva2@gmail.com',
+        senha: '123aisdi'
+    }).save()
+        .then((usuario) => {
+            console.log('salvou')
+            callback(usuario.attributes.id)
+        }).catch((error) => {
+            // console.log('catch')
+            console.log(error)
+        })
+
+}
+
+// insert the article, and when we are done, destroy connection and get the inserted article
+insertArticle(function (id) {
+    bookshelf.knex.destroy()
+    console.log("inserted article with id: " + id)
+})

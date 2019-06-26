@@ -14,7 +14,6 @@ router.get('/filme/disponivel', auth, (req, res) => {
 
 router.get('/filme/porTitulo', auth, (req, res) => {
     FilmeController.getFilmesPorTitulo(req.body.titulo).then((filmes) => {
-        console.log(filmes.toJSON())
         res.send(filmes)
     }).catch((error) => {
         res.status(500).send(error)

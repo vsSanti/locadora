@@ -22,7 +22,8 @@ exports.up = function (knex, Promise) {
             table.increments('id').primary();
             table.integer('exemplar_filme_id').unsigned().references('id').inTable('exemplar_filme');
             table.integer('usuario_id').unsigned().references('id').inTable('usuario');
-            table.timestamps();
+            table.datetime('devolvido_at');
+            table.datetime('emprestado_at').defaultTo(knex.fn.now());
         })
     ])
 };

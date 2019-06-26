@@ -1,5 +1,4 @@
 const bookshelf = require('../bookshelf')
-const Locacao = require('./locacao')
 
 const ExemplarFilme = bookshelf.Model.extend({
     tableName: 'exemplar_filme',

@@ -1,11 +1,9 @@
 const bookshelf = require('./../bookshelf')
 const bcrypt = require('bcryptjs')
 const validator = require('validator')
-const Promise = require('bluebird')
 
 const Usuario = bookshelf.Model.extend({
     tableName: 'usuario',
-    // hasTimestamps: true,
     tokens() {
         return this.hasMany('Token', 'usuario_id');
     },

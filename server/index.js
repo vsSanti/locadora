@@ -1,7 +1,7 @@
 const express = require('express')
-const usuarioRouter = require('./routers/usuario')
-const locacaoRouter = require('./routers/locacao')
-const filmeRouter = require('./routers/filme')
+const usuarioRouter = require('./routers/usuarioRouter')
+const locacaoRouter = require('./routers/locacaoRouter')
+const filmeRouter = require('./routers/filmeRouter')
 
 const app = express()
 const port = process.env.PORT || 3000

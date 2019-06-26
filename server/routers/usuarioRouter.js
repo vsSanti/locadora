@@ -1,8 +1,7 @@
 const express = require('express')
 const bcrypt = require('bcryptjs')
-const Usuario = require('../models/usuario')
-const UsuarioController = require('../controllers/usuarios')
-const TokenController = require('../controllers/tokens')
+const UsuarioController = require('../controllers/usuarioController')
+const TokenController = require('../controllers/tokenController')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 

@@ -15,7 +15,7 @@ const Filme = bookshelf.Model.extend({
     async criaExemplares() {
         const listaExemplares = []
         const n = Math.floor((Math.random() * 10) + 1)
-        console.log('Criando ' + n + ' exemplares para o filme ' + this.toJSON().nome)
+        console.log('Criando ' + n + ' exemplares para o filme ' + this.toJSON().titulo)
         for (let i = 0; i < n; i++) {
             listaExemplares.push({ filme_id: this.id })
         }

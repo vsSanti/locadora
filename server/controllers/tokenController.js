@@ -3,7 +3,7 @@ const Token = require('../models/token')
 const Usuario = require('../models/usuario')
 const Promise = require('bluebird')
 
-const Tokens = bookshelf.Collection.extend({ model: Token }, {
+const TokenController = bookshelf.Collection.extend({ model: Token }, {
 
     createToken: Promise.method(function (usuario_id) {
         if (!usuario_id) {
@@ -20,4 +20,4 @@ const Tokens = bookshelf.Collection.extend({ model: Token }, {
     }
 });
 
-module.exports = bookshelf.collection('Tokens', Tokens)
+module.exports = bookshelf.collection('TokenController', TokenController)

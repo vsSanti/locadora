@@ -12,7 +12,7 @@ exports.up = function (knex, Promise) {
             table.string('valor').notNullable();
         }).createTable('filme', function (table) {
             table.increments('id').primary();
-            table.string('nome');
+            table.string('titulo');
             table.string('diretor');
         }).createTable('exemplar_filme', function (table) {
             table.increments('id').primary();

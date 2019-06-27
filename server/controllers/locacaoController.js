@@ -13,12 +13,14 @@ const LocacaoController = bookshelf.Collection.extend({ model: Locacao }, {
 
     async generateDevolucao(locacao_id) {
         if (!locacao_id) {
-            throw new Error('locaca_id is null')
+            throw new Error('locacao_id is null')
         }
 
-        return await Locacao.forge({ id: locacao_id }).fetch({ withRelated: ['exemplarFilme'] })
+        return await Locacao.forge({ id: locacao_id, devolvido_at: null }).fetch({ withRelated: ['exemplarFilme'] })
             .then(async (locacao) => {
-
+                if (!locacao) {
+                    throw new Error('locacao não foi identificada')
+                }
                 return Promise.all([
                     locacao.set('devolvido_at', new Date()).save(),
                     locacao.related('exemplarFilme').set('is_locado', 0).save()

@@ -29,6 +29,8 @@ router.post('/usuario/login', (req, res) => {
         }
         TokenController.createToken(usuario.id).then((token) => {
             res.status(200).send({ usuario, token: token.toJSON().valor })
+        }).catch((error) => {
+            res.status(400).send(error)
         })
     }).catch((error) => {
         console.log(error)

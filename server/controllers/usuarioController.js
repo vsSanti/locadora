@@ -7,7 +7,7 @@ const UsuarioController = bookshelf.Collection.extend({ model: Usuario }, {
     },
 
     async findByEmailWithTokens(email) {
-        return await Usuario.forge({ email }).fetch({ withRelated: ['tokens'] })
+        return await Usuario.forge({ email }).fetch({ require: true })
     }
 });
 

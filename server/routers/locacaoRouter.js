@@ -5,7 +5,7 @@ const ExemplarFilme = require('../models/exemplarFilme')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
-router.post('/locacao', auth, (req, res) => {
+router.post('/locacao/locar', auth, (req, res) => {
     if (!req.body.exemplarFilme_id) {
         res.status(400).send('exemplarFilme_id is null')
     }
@@ -22,5 +22,18 @@ router.post('/locacao', auth, (req, res) => {
             res.status(500).send()
         })
 })
+
+router.post('/locacao/devolver', auth, (req, res) => {
+    if (!req.body.locacao_id) {
+        res.status(400).send('locacao_id is null')
+    }
+
+    LocacaoController.generateDevolucao(req.body.locacao_id).then((locacao) => {
+        res.send(locacao)
+    }).catch((error) => {
+        res.status(500).send()
+    })
+})
+
 
 module.exports = router
